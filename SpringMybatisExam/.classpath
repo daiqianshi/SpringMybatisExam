@@ -44,5 +44,8 @@
 	<classpathentry kind="lib" path="lib/spring-expression-3.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-jdbc-3.2.9.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/spring-tx-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-aspects-3.2.9.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/aspectjweaver-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/com.springsource.org.aopalliance-1.0.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

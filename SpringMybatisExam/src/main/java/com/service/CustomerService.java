@@ -8,7 +8,7 @@ public class CustomerService {
 	
 	private CustomerDao customerDao;
 	
-	private MyPublish myPublish;
+	//private MyPublish myPublish;
 	
 	public void setCustomerDao(CustomerDao customerDao) {
 		this.customerDao = customerDao;
@@ -18,17 +18,17 @@ public class CustomerService {
 		return customerDao.getCustomerById(id);
 	}
 	
-	public MyPublish getMyPublish() {
+	/*public MyPublish getMyPublish() {
 		return myPublish;
 	}
 
 	public void setMyPublish(MyPublish myPublish) {
 		this.myPublish = myPublish;
-	}
+	}*/
 
 	public void insertCustomer(Customer customer){
-		myPublish.beforeInsertFilmEvent();
+		//myPublish.beforeInsertFilmEvent();
 		customerDao.insertCustomer(customer);
-		myPublish.afterInsertFilmEvent();
+		//myPublish.afterInsertFilmEvent();
 	}
 }

@@ -30,21 +30,32 @@
   		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory"></property> -->
   	</bean>
   	
-  	<!-- 定义事件发布bean -->
-  	<bean id="myPublish" class="com.event.MyPublish"></bean>
-  	<!-- 注册事件监听器 -->
-  	<bean id="eventListener" class="com.event.EventListener"></bean>
+  <!-- 	 定义事件发布bean 
+  	<bean id="myPublish" class="com.event.MyPublish"></bean>-->
+  	<!-- 注册事件监听器 
+  	<bean id="eventListener" class="com.event.EventListener"></bean> -->
   	
   	<!-- 定义用户bean -->
   	<bean id="customerService" class="com.service.CustomerService">
   		<property name="customerDao" ref="customerDao"></property>
-  		<property name="myPublish" ref="myPublish"></property>
+  		<!-- <property name="myPublish" ref="myPublish"></property> -->
   	</bean>
   	
   	<bean id="addressService" class="com.service.AddressService">
   		<property name="addressDao" ref="addressDao"></property>
   	</bean>
-  	
+  	<!-- 配置aspectj注解 -->
+  	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+  	<!-- 声明方面组件 -->
+    <bean id="selectAspect" class="com.event.SelectAspect"/>
+    
+    <!-- 配置AOP -->
+    <aop:config>
+        <aop:aspect ref="selectAspect">
+            <aop:before method="beforeInsertEvent" pointcut="execution(* com.service.CustomerService.insertCustomer(..))"/>
+            <aop:after-returning method="afterInsertEvent" pointcut="execution(* com.service.CustomerService.insertCustomer(..))"/>
+        </aop:aspect>
+    </aop:config> 
   	<!-- 事务配置 -->
   	 <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">    
           <property name="dataSource" ref="dataSource"></property>

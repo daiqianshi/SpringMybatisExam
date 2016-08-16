@@ -29,8 +29,16 @@
   		 <!-- <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>   -->
   		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory"></property> -->
   	</bean>
+  	
+  	<!-- 定义事件发布bean -->
+  	<bean id="myPublish" class="com.event.MyPublish"></bean>
+  	<!-- 注册事件监听器 -->
+  	<bean id="eventListener" class="com.event.EventListener"></bean>
+  	
+  	<!-- 定义用户bean -->
   	<bean id="customerService" class="com.service.CustomerService">
   		<property name="customerDao" ref="customerDao"></property>
+  		<property name="myPublish" ref="myPublish"></property>
   	</bean>
   	
   	<bean id="addressService" class="com.service.AddressService">

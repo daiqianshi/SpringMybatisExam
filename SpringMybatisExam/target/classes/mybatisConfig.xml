@@ -6,6 +6,9 @@
 	<typeAliases>
 		<typeAlias alias="customer" type="com.entitys.Customer"/>
 		<typeAlias alias="address" type="com.entitys.Address"/>
+		<typeAlias alias="country" type="com.entitys.Country"/>
+		<typeAlias alias="city" type="com.entitys.City"/>
+		<typeAlias alias="store" type="com.entitys.Store"/>
 	</typeAliases>
 	 <mappers>
 	 	<mapper resource="com/dao/CustomerMapper.xml"/>

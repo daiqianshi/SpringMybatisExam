@@ -29,20 +29,20 @@ public class App
     	//数据输入
     	Scanner scanner = new Scanner(System.in);
     	System.out.println("请输入你的信息：");
-    	System.out.print("first_name：");
+    	System.out.println("first_name：");
     	first_name = scanner.nextLine();
-    	System.out.print("last_name：");
+    	System.out.println("last_name：");
     	last_name = scanner.nextLine();
-    	System.out.print("email：");
+    	System.out.println("email：");
     	email = scanner.nextLine();
-    	System.out.print("address_id：");
+    	System.out.println("address_id：");
     	//address_id = scanner.nextInt();
     	do {
     		address_id = scanner.nextInt();
     		if (!addressExist(factory, address_id)) {
-    			System.out.println("无效输入，请重新输入：");
+    			System.out.println("无效的address_id，请重新输入：");
 			}else {
-				System.out.println("有效输入");
+				System.out.println("有效的address_id，你可以进行以后操作");
 				addressExist = true;
 				break;
 			}
@@ -51,7 +51,6 @@ public class App
     	//执行插入和显示操作
     	if (addressExist) {
     		Customer customer = new Customer();    		
-			System.out.println("ssssssss");
 			customer.setStore_id(1);
 			customer.setFirst_name(first_name);
 			customer.setLast_name(last_name);
@@ -61,10 +60,10 @@ public class App
 			
 			insertAndSelectCustomer(factory, customer);
 		}
+    	
+    	System.out.println("请输入你要删除的客户的customer_id:");
+    	
     	  
-			//System.out.println(customer.getCustomer_id());
-    		/*Customer customer1 = customerService.getCustomerById(1);
-        	System.out.println("first_name" + customer1.getFirst_name());*/
     }
     
     public static void insertAndSelectCustomer(BeanFactory factory,Customer customer){
@@ -75,6 +74,7 @@ public class App
     	Customer customer1 = customerService.getCustomerById(customer.getCustomer_id());
     	Address address =  getAddress(factory, customer1.getAddress_id());
     	System.out.println("您保存的信息为：");
+    	System.out.println("customer_id:" + customer1.getCustomer_id());
     	System.out.println("first_name:" + customer1.getFirst_name());
     	System.out.println("last_name:" + customer1.getLast_name());
     	System.out.println("email:" + customer1.getEmail());
